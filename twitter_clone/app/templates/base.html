@@ -1,0 +1,19 @@
+    {% else %}
+    <title>Welcome to my Twitter Clone</title>
+    {% endif %}
+  </head>
+  <body>
+    <div><h1>Welcome to my Twitter clone!</h1></div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+ <form action="" method="post" name="post">
+      {{ form.hidden_tag() }}
+      <table>
+
+          <tr>
+              <td>Enter your name:</td>
+              <td>{{ name.name(size=30, maxlength=140) }}</td>
+              <td>
+              {% for error in name.name.errors %}
+              <span style="color: red;">[{{ error }}]</span><br>
+              {% endfor %}
+              </td>
+          </tr>
+          <tr>
+              <td>Say something:</td>
+              <td>{{ form.post(size=30, maxlength=140) }}</td>
+              <td>
+              {% for error in form.post.errors %}
+              <span style="color: red;">[{{ error }}]</span><br>
+              {% endfor %}
+              </td>
+          </tr>
+          <tr>
+              <td></td>
+              <td><input type="submit" value="Post!"></td>
+              <td></td>
+          </tr>
+      </table>
+  </form>
+      {% for dict_item in posts %}
+          {% for key, value in dict_item.items() %}
+      <div><p>{{ key }} says: <b>{{ value }}</b></p></div>
+          {% endfor %}
+      {% endfor %}
+{% endblock %}
